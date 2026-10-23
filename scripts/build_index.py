@@ -12,7 +12,11 @@ for md in sorted(root.glob("skills/*/SKILL.md")):
     for line in m.group(1).splitlines():
         k, _, v = line.partition(":")
         v = v.strip()
-        meta[k.strip()] = [x.strip() for x in v[1:-1].split(",") if x.strip()] if v.startswith("[") else v
+        meta[k.strip()] = v
+    for key in ("sites", "topics"):
+        v = meta.get(key, "")
+        if isinstance(v, str):  # "[a, b]", "a, b" or "a b" all mean a list
+            meta[key] = [x.strip() for x in re.split(r"[,\s]+", v.strip().strip("[]")) if x.strip()]
     for key in ("name", "description", "sites", "topics", "verified"):
         if key not in meta:
             raise SystemExit(f"{md}: missing {key}")
