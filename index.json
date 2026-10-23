@@ -1,0 +1,26 @@
+{
+ "version": 1,
+ "skills": [
+  {
+   "name": "cn-train-flight-search",
+   "description": "查国内高铁 / 火车的车次、余票和票价，以及国内航班的列表价。比较火车和飞机、查某天某条线路时先读。",
+   "sites": [
+    "kyfw.12306.cn",
+    "m.ly.com",
+    "flights.ctrip.com",
+    "m.ctrip.com",
+    "flights.qunar.com",
+    "google.com"
+   ],
+   "topics": [
+    "travel",
+    "出行",
+    "高铁",
+    "火车",
+    "机票"
+   ],
+   "verified": "2026-10-23",
+   "path": "skills/cn-train-flight-search/SKILL.md"
+  }
+ ]
+}
