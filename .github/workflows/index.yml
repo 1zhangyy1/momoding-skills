@@ -1,0 +1,25 @@
+# After a merge: rebuild index.json from the skills, and mirror the repo to Gitee
+# (set the GITEE_TOKEN secret in this repo's settings to turn the mirror on).
+name: index
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - run: python3 scripts/build_index.py
+      - name: commit index.json if it changed
+        run: |
+          if ! git diff --quiet index.json; then
+            git config user.name "momoding-bot"; git config user.email "actions@users.noreply.github.com"
+            git commit -m "index.json" index.json && git push
+          fi
+      - name: mirror to Gitee
+        env: { GITEE_TOKEN: "${{ secrets.GITEE_TOKEN }}" }
+        if: env.GITEE_TOKEN != ''
+        run: git push --force "https://nuomijizhangyy:${GITEE_TOKEN}@gitee.com/nuomijizhangyy/momoding-skills.git" HEAD:main
