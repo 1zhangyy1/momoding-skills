@@ -2,6 +2,23 @@
  "version": 1,
  "skills": [
   {
+   "name": "cn-12306-train-tickets",
+   "description": "查国内某天某条线路的高铁/普速车次、余票和票价：12306 无需登录的两个接口怎么用，站名代码怎么对。查车次票价时读。",
+   "sites": [
+    "kyfw.12306.cn"
+   ],
+   "topics": [
+    "高铁",
+    "火车",
+    "车次",
+    "票价",
+    "余票",
+    "12306"
+   ],
+   "verified": "2026-10-23",
+   "path": "skills/cn-12306-train-tickets/SKILL.md"
+  },
+  {
    "name": "cn-train-flight-search",
    "description": "查国内高铁 / 火车的车次、余票和票价，以及国内航班的列表价。比较火车和飞机、查某天某条线路时先读。",
    "sites": [
